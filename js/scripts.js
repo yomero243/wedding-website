@@ -240,8 +240,14 @@ $(document).ready(function () {
 /********************** Extras **********************/
 
 // Google map
-function initMap() {
-    var location = {lat: 22.5932759, lng: 88.27027720000001};
+function initMap() 
+{
+    // Convertimos las coordenadas de grados, minutos, segundos a decimales
+    var lat = 18 + 58/60 + 45.5/3600;
+    var lng = -(98 + 14/60 + 19.8/3600);
+    
+    var location = {lat: lat, lng: lng};
+    
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: location,
@@ -250,23 +256,35 @@ function initMap() {
 
     var marker = new google.maps.Marker({
         position: location,
-        map: map
+        map: map,
+        title: "Salon Jardín Ex Hacienda San Bartolo"
     });
 }
-
-function initBBSRMap() {
-    var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: la_fiesta,
-        scrollwheel: false
-    });
-
     var marker = new google.maps.Marker({
-        position: la_fiesta,
+        position: location,
         map: map
     });
-}
+
+
+    function initMap() {
+        // Convertimos las coordenadas de grados, minutos, segundos a decimales
+        var lat = 18 + 58/60 + 45.5/3600;
+        var lng = -(98 + 14/60 + 19.8/3600);
+        
+        var location = {lat: lat, lng: lng};
+        
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+            zoom: 15,
+            center: location,
+            scrollwheel: false
+        });
+    
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: "Salon Jardín Ex Hacienda San Bartolo"
+        });
+    }
 
 // alert_markup
 function alert_markup(alert_type, msg) {
