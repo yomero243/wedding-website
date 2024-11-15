@@ -1,3 +1,11 @@
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:2950730274.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:7483300.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:1870505857.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:4190153005.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:3714218135.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:656609287.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:1496135494.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:2745408443.
 $(document).ready(function () {
 
     /***************** Waypoints ******************/
@@ -238,6 +246,32 @@ $(document).ready(function () {
 });
 
 /********************** Extras **********************/
+
+// Countdown timer
+function startCountdown() {
+    var countDownDate = new Date("May 30, 2025 10:00:00").getTime();
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+  if (distance < 0) {
+    clearInterval(x);
+            document.getElementById("countdown-timer").innerHTML = "Happening Now!";
+  }
+}, 1000);
+}
+
+// Call the countdown function when the page loads
+window.onload = function() {
+    startCountdown();
+};
 
 // Google map
 function initMap() 
