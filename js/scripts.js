@@ -1,10 +1,10 @@
 function initDarkMode() {
-    // Eliminar toda la función
+    // La función se eliminará por completo
 }
 
-// Estilos del mapa para modo oscuro
-const darkMapStyle = [
-    // Eliminar todo el array
+// Cambiar const por var para compatibilidad
+var darkMapStyle = [
+    // El array se eliminará
 ];
 
-const lightMapStyle = []; // Estilo por defecto del mapa
+var lightMapStyle = []; // Estilo por defecto del mapa
