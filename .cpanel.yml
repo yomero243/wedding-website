@@ -1,8 +1,14 @@
-Deploy an entire directory
-The following .cpanel.yml file copies the images directory and all of its contents to the example account’s public_html directory:
-
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/repositories/wedding-website
-    - /bin/cp -R images $DEPLOYPATH
+    # 1. Define el directorio de despliegue
+    - export DEPLOYPATH=/home1/annygabr/repositories/wedding-website
+
+    # 2. Instala las dependencias con npm
+    - npm install
+
+    # 3. Ejecuta gulp para compilar los assets
+    - gulp
+
+    # 4. Copia todos los archivos del proyecto al directorio de despliegue
+    - /bin/cp -R * $DEPLOYPATH
