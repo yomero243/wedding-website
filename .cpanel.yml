@@ -3,12 +3,17 @@ deployment:
   tasks:
     # 1. Define el directorio de despliegue
     - export DEPLOYPATH=/home1/annygabr/repositories/wedding-website
+    - export PATH=/home1/annygabr/nodevenv/repositories/wedding-website/16/bin:$PATH
 
-    # 2. Instala las dependencias con npm
-    - npm install
+    # 2. Copia archivos y directorios específicos
+    - /bin/cp -R css $DEPLOYPATH
+    - /bin/cp -R js $DEPLOYPATH
+    - /bin/cp -R images $DEPLOYPATH
+    - /bin/cp -R sass $DEPLOYPATH
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp package.json $DEPLOYPATH
+    - /bin/cp gulpfile.js $DEPLOYPATH
 
-    # 3. Ejecuta gulp para compilar los assets
-    - gulp
-
-    # 4. Copia todos los archivos del proyecto al directorio de despliegue
-    - /bin/cp -R * $DEPLOYPATH
+    # 3. Instala las dependencias y compila los assets
+    - cd $DEPLOYPATH && /usr/local/bin/npm install
+    - cd $DEPLOYPATH && /usr/local/bin/node ./node_modules/.bin/gulp
