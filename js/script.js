@@ -4,12 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
         card.style.cssText = `
             flex-shrink: 0;
             border-radius: 20px;
-            background: #f2d4e7;
-            box-shadow: 0 4px 15px rgba(203, 221, 237, 0.5);
+            background: rgba(74, 144, 226, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.2);
             width: 430px;
             height: 260px;
             padding: 24px;
-            background-image: linear-gradient(62deg, #f0bede 0%, #f2d4e7 45%);
+            background-image: linear-gradient(
+                62deg,
+                rgba(74, 144, 226, 0.15) 0%,
+                rgba(74, 144, 226, 0.05) 45%
+            );
             margin: 0 20px;
             text-align: center;
         `;
@@ -19,11 +26,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div style="margin-bottom: 2px; font-weight: 500;">${bank}</div>
                 <div style="margin-bottom: 16px; display: flex; align-items: center; justify-content: center;">
                     <div style="font-size: 1.875rem; font-weight: bold; margin-right: 8px;">${accountNumber}</div>
-                    <button class="copy-btn" style="font-size: 1.125rem; padding: 2px 4px; cursor: pointer;">
+                    <button class="copy-btn" style="
+                        font-size: 1.125rem; 
+                        padding: 2px 4px; 
+                        cursor: pointer; 
+                        background: rgba(74, 144, 226, 0.2); 
+                        border: 1px solid rgba(74, 144, 226, 0.3);
+                        border-radius: 5px;
+                        backdrop-filter: blur(5px);
+                        -webkit-backdrop-filter: blur(5px);
+                    ">
                         <i class="bx bx-copy"></i>
                     </button>
                 </div>
-                <div style="margin-bottom: 2px; font-weight: 500;">Atas Nama</div>
+                <div style="margin-bottom: 2px; font-weight: 500;">A nombre de</div>
                 <div style="font-size: 1.25rem; font-weight: 600;">${name}</div>
             </div>
         `;
@@ -45,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const envelopeContainer = document.getElementById("digital-envelope");
         
         const cardData = [
-            { bank: "BCA", accountNumber: "7401557702", name: "Rossiani Hutami" },
-            { bank: "BCA", accountNumber: "1450055294", name: "Fauzi Al Aziz" }
+            { bank: "BBVA", accountNumber: "7401557702", name: "Jose Gabriel Cerdio Oyarzabal" },
+            { bank: "Banamex", accountNumber: "1450055294", name: "Ana Alicia Perez Garcia" }
         ];
 
         const cardsContainer = document.createElement("div");
@@ -68,4 +84,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderDigitalEnvelope();
 });
-  
