@@ -1,21 +1,14 @@
+---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/annygabr/repositories/wedding-website/
-    - /bin/cp -R css $DEPLOYPATH
-    - /bin/cp -R js $DEPLOYPATH
-    - /bin/cp -R img $DEPLOYPATH
-    - /bin/cp -R sass $DEPLOYPATH
-    - /bin/cp -R .github $DEPLOYPATH
-    - /bin/cp -R .idx $DEPLOYPATH
-    - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp manifest.json $DEPLOYPATH
-    - /bin/cp site.webmanifest $DEPLOYPATH
-    - /bin/cp browserconfig.xml $DEPLOYPATH
-    - /bin/cp .nojekyll $DEPLOYPATH
-    - /bin/cp CNAME $DEPLOYPATH
-    - /bin/cp gulpfile.js $DEPLOYPATH
-    - /bin/cp package.json $DEPLOYPATH
-    - /bin/cp README.md $DEPLOYPATH
-    - /bin/cp -R node_modules/animate.css $DEPLOYPATH/node_modules/
-    - /bin/cp -R node_modules/font-awesome $DEPLOYPATH/node_modules/
-    - /bin/cp -R node_modules/waypoints $DEPLOYPATH/node_modules/ 
+    # 1. Define el directorio de despliegue
+    - export DEPLOYPATH=/home1/annygabr/repositories/wedding-website
+
+    # 2. Instala las dependencias con npm
+    - npm install
+
+    # 3. Ejecuta gulp para compilar los assets
+    - gulp
+
+    # 4. Copia todos los archivos del proyecto al directorio de despliegue
+    - /bin/cp -R * $DEPLOYPATH
