@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const envelopeContainer = document.getElementById("digital-envelope");
         
         const cardData = [
-            { bank: "BBVA", accountNumber: "7401557702", name: "Jose Gabriel Cerdio Oyarzabal" },
+            { bank: "BBVA", accountNumber: "012180015325671790", name: "Jose Gabriel Cerdio Oyarzabal" },
             { bank: "Banamex", accountNumber: "1450055294", name: "Ana Alicia Perez Garcia" }
         ];
 
