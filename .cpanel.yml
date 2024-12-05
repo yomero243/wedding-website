@@ -1,12 +1,8 @@
 ---
 deployment:
   tasks:
-    # 1. Define el directorio de despliegue
-    - export DEPLOYPATH=/home1/annygabr/repositories/wedding-website
-
-    # 2. Copia solo los archivos necesarios para producción
-    - /bin/cp -R css $DEPLOYPATH
-    - /bin/cp -R js $DEPLOYPATH
-    - /bin/cp -R images $DEPLOYPATH
-    - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp favicon.ico $DEPLOYPATH
+    - export DEPLOYPATH=/home1/annygabr/public_html/wedding-website
+    - /bin/cp -R js $DEPLOYPATH/
+    - /bin/cp -R images $DEPLOYPATH/
+    - /bin/cp index.html $DEPLOYPATH/
+    - /bin/cp favicon.ico $DEPLOYPATH/
