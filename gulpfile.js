@@ -4,6 +4,8 @@ var gulp = require('gulp');
 var sass = require('gulp-sass')(require('sass'));
 var terser = require('gulp-terser');
 var rename = require('gulp-rename');
+var autoprefixer = require('gulp-autoprefixer');
+var minifycss = require('gulp-minify-css');
 
 // compile scss to css
 gulp.task('sass', function () {
@@ -26,5 +28,15 @@ gulp.task('minify-js', function () {
         .pipe(gulp.dest('./js'));
 });
 
+// styles
+gulp.task('styles', function() {
+    return gulp.src('sass/styles.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer('last 2 versions'))
+        .pipe(minifycss())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('css'));
+});
+
 // default task
-gulp.task('default', gulp.series('sass', 'minify-js'));
+gulp.task('default', gulp.series('sass', 'minify-js', 'styles'));
