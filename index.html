@@ -391,9 +391,8 @@ Después de unos buenos meses, finalmente me armé de valor para invitarla a sal
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
                     <div class="section-padding">
-                        <h3>Thank you!</h3>
-                        <p>We are glad to see you join us on our big day.</p>
-                        <div id="add-to-cal"></div>
+                        <h3>¡Gracias!</h3>
+                        <p>Hemos recibido tu confirmación correctamente.</p>
                     </div>
                 </div>
             </div><!-- /.modal-content -->
@@ -405,47 +404,33 @@ Después de unos buenos meses, finalmente me armé de valor para invitarla a sal
             <div class="col-md-6 col-md-offset-3">
                 <h3>¿Qué estás esperando?</h3>
                 <p>Agradeceríamos mucho si pudieras confirmar tu asistencia antes del 1 de mayo de 2025</p>
-                <form id="rsvp-form" class="rsvp-form"
-                      action=""
-                      method="POST">
+                <form id="rsvp-form" class="rsvp-form" method="POST" target="_blank">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-envelope"></i><input type="email" name="email" class=""
-                                                                     placeholder="Tu correo electrónico"
-                                                                     required>
+                                <i class="fa fa-envelope"></i>
+                                <input type="email" name="email" class="" placeholder="Tu correo electrónico" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-user"></i><input name="name" class=""
-                                                                 placeholder="Tu nombre"
-                                                                 required>
+                                <i class="fa fa-user"></i>
+                                <input name="name" class="" placeholder="Tu nombre" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6">
+                        <div class="col-md-12">
                             <div class="form-input-group">
-                                <i class="fa fa-users"></i><input type="number" name="extras" class="" min="0"
-                                                                  max="4"
-                                                                  placeholder="Esposo/Esposa o hijos"
-                                                                  required>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-key"></i><input type="number" name="invite_code" id="invite_code"
-                                                                class="" min="0"
-                                                                placeholder="Código de invitación"
-                                                                required>
+                                <i class="fa fa-users"></i>
+                                <input type="number" name="extras" class="" min="0" max="4" placeholder="Esposo/Esposa o hijos" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
-                    <button class="btn-fill rsvp-btn">
+                    <button type="submit" class="btn-fill rsvp-btn">
                         ¡Sí, confirmo mi asistencia!
                     </button>
                 </form>
