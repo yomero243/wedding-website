@@ -84,3 +84,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderDigitalEnvelope();
 });
+
+function initMap() {
+    // Coordenadas exactas del Salon Jardín Ex Hacienda San Bartolo
+    const venue = { lat: 19.0414, lng: -98.1959 }; 
+
+    const map = new google.maps.Map(document.getElementById('map-canvas'), {
+        center: venue,
+        zoom: 17,
+        // Opcional: si tienes un Map ID de Google Cloud Console
+        // mapId: 'YOUR_MAP_ID', 
+    });
+
+    const marker = new google.maps.marker.AdvancedMarkerElement({
+        map,
+        position: venue,
+        title: 'Salon Jardín Ex Hacienda San Bartolo'
+    });
+
+    const infoWindow = new google.maps.InfoWindow({
+        content: `
+            <div style="font-family: Arial, sans-serif; max-width: 250px;">
+                <h3 style="margin-bottom: 10px; color: #333;">Salon Jardín Ex Hacienda San Bartolo</h3>
+                <p style="color: #666;">
+                    Av. 3 Sur 12105 -A<br>
+                    Ampliación Guadalupe Hidalgo<br>
+                    72490 Puebla, Pue.
+                </p>
+                <a href="https://maps.google.com/maps?q=19.0414,-98.1959" target="_blank">Abrir en Google Maps</a>
+            </div>
+        `
+    });
+
+    marker.addListener('click', () => {
+        infoWindow.open({
+            anchor: marker,
+            map: map
+        });
+    });
+}
