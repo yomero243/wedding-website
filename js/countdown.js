@@ -1,32 +1,44 @@
-simplyCountdown('#cuenta', {
-	year: 2025, // required
-	month: 10, // required
-	day: 26, // required
-	hours: 7, // Default is 0 [0-23] integer
-	minutes: 31, // Default is 0 [0-59] integer
-	seconds: 0, // Default is 0 [0-59] integer
-	words: { //words displayed into the countdown
-		days: 'Día',
-		hours: 'Hora',
-		minutes: 'Minuto',
-		seconds: 'Segundo',
-		pluralLetter: 's'
-	},
-	plural: true, //use plurals
-	inline: false, //set to true to get an inline basic countdown like : 24 days, 4 hours, 2 minutes, 5 seconds
-	inlineClass: 'simply-countdown-inline', //inline css span class in case of inline = true
-	// in case of inline set to false
-	enableUtc: true, //Use UTC as default
-	onEnd: function() {
+class WeddingCountdown {
+	constructor(targetDate) {
+		this.targetDate = new Date(targetDate);
+		this.elements = {
+			days: document.getElementById('days'),
+			hours: document.getElementById('hours'),
+			minutes: document.getElementById('minutes'),
+			seconds: document.getElementById('seconds')
+		};
+	}
 
+	start() {
+		this.update();
+		setInterval(() => this.update(), 1000);
+	}
 
-		document.getElementById('portada').classList.add('oculta');
-		return; 
-	}, //Callback on countdown end, put your own function here
-	refresh: 1000, // default refresh every 1s
-	sectionClass: 'simply-section', //section css class
-	amountClass: 'simply-amount', // amount css class
-	wordClass: 'simply-word', // word css class
-	zeroPad: false,
-	countUp: false
-});
+	update() {
+		const now = new Date();
+		const distance = this.targetDate - now;
+		
+		if (distance < 0) {
+			this.onComplete();
+			return;
+		}
+
+		const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		this.updateDisplay(days, hours, minutes, seconds);
+	}
+
+	updateDisplay(days, hours, minutes, seconds) {
+		this.elements.days.textContent = days;
+		this.elements.hours.textContent = hours;
+		this.elements.minutes.textContent = minutes;
+		this.elements.seconds.textContent = seconds;
+	}
+
+	onComplete() {
+		document.getElementById('countdown-timer').innerHTML = "¡El momento ha llegado!";
+	}
+}
