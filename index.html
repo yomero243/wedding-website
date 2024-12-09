@@ -68,6 +68,7 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
+<script src="js/script.js"></script>
 <section class="hero">
     <section class="navigation">
         <header>
@@ -450,18 +451,9 @@ Después de unos buenos meses, finalmente me armé de valor para invitarla a sal
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
 <script src="js/vendor/ouical.js"></script>
 <script src="js/scripts.min.js"></script>
-<script src="js/maps.js"></script>
-<script>
-  function loadGoogleMaps() {
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?keyS_MpcI&libraries=marker&callback=initMap`;
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-  }
 
-  // Llama a la función de carga cuando el documento esté listo
-  document.addEventListener('DOMContentLoaded', loadGoogleMaps);
+<script>
+  (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries","marker");a.src=`https://maps.googleapis.com/maps/api/js?key=AIzaSyDKBx2fw3vEx3Nt_beltv8lHHsPSS_MpcI&`+e.toString();a.async=!0;a.defer=!0;a.onerror=()=>n(Error(p));m.head.appendChild(a);await new Promise(t=>a.addEventListener("load",t))}));d[l]?console.warn(p+" already loaded"):d[l]=k=>r.add(k)&&u().then(()=>d[l](k))})();
 </script>
 <!-- Google Analytics -->
 <script>
@@ -511,7 +503,7 @@ window.onload = startCountdown;
         Sobres Digitales
     </h4>
 </div>
-<script src="js/script.js"></script>
+
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <script>
     // Prevenir FOUC (Flash of Unstyled Content)
