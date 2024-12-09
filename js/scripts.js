@@ -1,1 +1,0 @@
-var lightMapStyle = []; // Mantener solo el estilo por defecto del mapa

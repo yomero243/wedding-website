@@ -84,18 +84,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderDigitalEnvelope();
 
+    const mapShowBtn = document.getElementById('btn-show-map');
+    const mapCanvas = document.getElementById('map-canvas');
+    let mapInitialized = false;
+
+    mapShowBtn.addEventListener('click', () => {
+        if (mapCanvas.style.display === 'none' || mapCanvas.style.display === '') {
+            mapCanvas.style.display = 'block';
+            mapShowBtn.innerHTML = '<i class="fa fa-map-marker"></i>&nbsp;&nbsp;Hide map';
+
+            // Inicializar el mapa solo la primera vez
+            if (!mapInitialized) {
+                initMap();
+                mapInitialized = true;
+            }
+        } else {
+            mapCanvas.style.display = 'none';
+            mapShowBtn.innerHTML = '<i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show map';
+        }
+    });
+
     async function initMap() {
-        // Usar importLibrary para cargar las bibliotecas
         const { Map } = await google.maps.importLibrary("maps");
         const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
         
         const map = new Map(document.getElementById("map-canvas"), {
             center: { lat: 19.0414, lng: -98.1959 },
             zoom: 17,
-            mapId: "2ce30384c7e87023",
+            mapId: "2ce30384c7e87023"
         });
         
-        // Usar AdvancedMarkerElement en lugar de Marker
         const marker = new AdvancedMarkerElement({
             map,
             position: { lat: 19.0414, lng: -98.1959 },
@@ -123,6 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+    initMap();
 
     // Mantener la asignación global
     window.initMap = initMap;
