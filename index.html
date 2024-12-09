@@ -450,17 +450,15 @@ Después de unos buenos meses, finalmente me armé de valor para invitarla a sal
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
 <script src="js/vendor/ouical.js"></script>
 <script src="js/scripts.min.js"></script>
+<script src="js/maps.js"></script>
 <script>
-  function loadGoogleMaps() {
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDKBx2fw3vEx3Nt_beltv8lHHsPSS_MpcI&libraries=marker&callback=initMap`;
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-  }
-
-  // Llama a la función de carga cuando el documento esté listo
-  document.addEventListener('DOMContentLoaded', loadGoogleMaps);
+    // Configuración de carga dinámica
+    function loadGoogleMaps() {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${SECURE_API_KEY}&libraries=marker&callback=initMap`;
+        script.async = true;
+        document.head.appendChild(script);
+    }
 </script>
 <!-- Google Analytics -->
 <script>

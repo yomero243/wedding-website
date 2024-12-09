@@ -83,25 +83,61 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     renderDigitalEnvelope();
+
+    // Configuración del mapa
+    const VENUE = { lat: 19.0414, lng: -98.1959 };
+    const API_KEY = 'AIzaSyDKBx2fw3vEx3Nt_beltv8lHHsPSS_MpcI';
+
+    // Función para cargar el script de Google Maps
+    function loadGoogleMaps() {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDKBx2fw3vEx3Nt_beltv8lHHsPSS_MpcI&callback=initMap&v=weekly&libraries=marker`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+    }
+
+    // Cargar el mapa cuando el DOM esté listo
+    if (document.readyState !== 'loading') {
+        loadGoogleMaps();
+    } else {
+        document.addEventListener('DOMContentLoaded', loadGoogleMaps);
+    }
 });
 
-function initMap() {
-    // Coordenadas exactas del Salon Jardín Ex Hacienda San Bartolo
-    const venue = { lat: 19.0414, lng: -98.1959 }; 
+let map;
 
-    const map = new google.maps.Map(document.getElementById('map-canvas'), {
-        center: venue,
-        zoom: 17,
-        // Opcional: si tienes un Map ID de Google Cloud Console
-        // mapId: 'YOUR_MAP_ID', 
+async function initMap() {
+    // Verificar si el elemento existe
+    const mapElement = document.getElementById("map-canvas");
+    
+    if (!mapElement) {
+        console.error("Elemento del mapa no encontrado. Asegúrate de que existe un div con id 'map-canvas'");
+        return;
+    }
+
+    // La ubicación del Salon Jardín
+    const position = { lat: 19.0414, lng: -98.1959 };
+
+    // Solicitar las bibliotecas necesarias
+    const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+    // Crear el mapa, centrado en la ubicación
+    map = new Map(mapElement, {
+        zoom: 17, // Nivel de zoom ajustado para ver de cerca la ubicación
+        center: position,
+        mapId: "SALON_JARDIN_MAP", // Map ID personalizado
     });
 
-    const marker = new google.maps.marker.AdvancedMarkerElement({
-        map,
-        position: venue,
-        title: 'Salon Jardín Ex Hacienda San Bartolo'
+    // Crear el marcador, posicionado en la ubicación
+    const marker = new AdvancedMarkerElement({
+        map: map,
+        position: position,
+        title: "Salon Jardín Ex Hacienda San Bartolo"
     });
 
+    // Agregar un InfoWindow con información adicional
     const infoWindow = new google.maps.InfoWindow({
         content: `
             <div style="font-family: Arial, sans-serif; max-width: 250px;">
@@ -116,6 +152,7 @@ function initMap() {
         `
     });
 
+    // Agregar evento de clic al marcador para mostrar el InfoWindow
     marker.addListener('click', () => {
         infoWindow.open({
             anchor: marker,
@@ -123,3 +160,6 @@ function initMap() {
         });
     });
 }
+
+// Inicializar el mapa cuando la página esté completamente cargada
+window.addEventListener('load', initMap);
