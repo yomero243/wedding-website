@@ -108,15 +108,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const { Map } = await google.maps.importLibrary("maps");
         const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
         
+        const location = { 
+            lat: 18.9794004083823, 
+            lng: -98.23880958994478 
+        };
+        
         const map = new Map(document.getElementById("map-canvas"), {
-            center: { lat: 19.0414, lng: -98.1959 },
+            center: location,
             zoom: 17,
             mapId: "2ce30384c7e87023"
         });
         
         const marker = new AdvancedMarkerElement({
             map,
-            position: { lat: 19.0414, lng: -98.1959 },
+            position: location,
             title: "Salon Jardín Ex Hacienda San Bartolo"
         });
 
@@ -129,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         Ampliación Guadalupe Hidalgo<br>
                         72490 Puebla, Pue.
                     </p>
-                    <a href="https://maps.google.com/maps?q=19.0414,-98.1959" target="_blank">Abrir en Google Maps</a>
+                    <a href="https://maps.google.com/maps?q=18.9794004083823,-98.23880958994478" target="_blank">Abrir en Google Maps</a>
                 </div>
             `
         });
