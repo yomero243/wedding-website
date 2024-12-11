@@ -3,15 +3,15 @@
 
 // Fonts
 
-$sans-serif: 'Open Sans', sans-serif;
-$serif: Merriweather, Georgia, 'Times New Roman', serif;
-$accent-font: 'Nunito', sans-serif;
+$sans-serif: 'Cardo', serif;
+$serif: 'Cardo', serif;
+$accent-font: 'Cardo', serif;
 
 // Weights
 
-$light: 300;
+$light: 400;
 $normal: 400;
-$semibold: 500;
+$semibold: 700;
 $bold: 700;
 
 // Sizes
@@ -43,16 +43,22 @@ p {
   line-height: $base-line-height;
   color: $txt-primary;
   padding-bottom: 20px;
+  font-family: 'Cardo', serif;
+  font-weight: 400;
 }
 
 h1 {
   font-size: $font-size-h1;
+  font-family: 'Cardo', serif;
+  font-weight: 700;
 }
 
 h2 {
   font-size: $font-size-h2;
   font-weight: $light;
   color: $h2-color;
+  font-family: 'Cardo', serif;
+  font-weight: 700;
 }
 
 h3 {
@@ -62,10 +68,14 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 3px;
   line-height: $base-line-height;
+  font-family: 'Cardo', serif;
+  font-weight: 700;
 }
 
 h4 {
   font-size: $font-size-h4;
+  font-family: 'Cardo', serif;
+  font-weight: 400;
 }
 
 h5 {
@@ -73,4 +83,6 @@ h5 {
   color: $h5-color;
   text-transform: uppercase;
   font-weight: $semibold;
+  font-family: 'Cardo', serif;
+  font-weight: 700;
 }
