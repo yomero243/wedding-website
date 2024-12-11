@@ -157,3 +157,33 @@ document.addEventListener("DOMContentLoaded", () => {
     img.onerror = () => console.error('Error al cargar la imagen de fondo');
     img.src = 'img/bg.jpg';
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header-content');
+    const countdownSection = document.querySelector('.countdown-section');
+
+    // Verificar si es un dispositivo móvil
+    const isMobile = window.innerWidth <= 768;
+
+    const observer = new IntersectionObserver((entries) => {
+        // Si es un dispositivo móvil, no hacer cambios
+        if (isMobile) return;
+
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Cuando la sección de countdown está en vista
+                header.classList.add('dark-header');
+            } else {
+                // Cuando la sección de countdown sale de vista
+                header.classList.remove('dark-header');
+            }
+        });
+    }, {
+        threshold: 0.1 // Ajusta este valor según necesites
+    });
+
+    // Solo observar si no es un dispositivo móvil
+    if (!isMobile) {
+        observer.observe(countdownSection);
+    }
+});
