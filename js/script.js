@@ -151,4 +151,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Mantener la asignación global
     window.initMap = initMap;
+
+    const img = new Image();
+    img.onload = () => console.log('Imagen de fondo cargada correctamente');
+    img.onerror = () => console.error('Error al cargar la imagen de fondo');
+    img.src = 'img/bg.jpg';
 });
