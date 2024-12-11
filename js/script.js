@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         const cardData = [
             { bank: "BBVA", accountNumber: "012180015325671790", name: "Jose Gabriel Cerdio Oyarzabal" },
-            { bank: "Banamex", accountNumber: "1450055294", name: "Ana Alicia Perez Garcia" }
+            { bank: "Banamex", accountNumber: "002650701547171194", name: "Ana Alicia Perez Garcia" }
         ];
 
         const cardsContainer = document.createElement("div");
